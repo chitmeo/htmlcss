@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date range</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h5>From date -> to Date</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <i class="material-icons">date_range</i>
+                <input type="text" class="datepicker" id="fromDate">
+            </div>
+            <div class="col s6">
+                <i class="material-icons">date_range</i>
+                <input type="text" class="datepicker" id="toDate">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var today = new Date();
+            var fromDate = document.getElementById('fromDate');
+            var toDate = document.getElementById('toDate');
+
+            var options = {
+                autoClose: true,
+                setDefaultDate: true,
+                defaultDate: today,
+                minDate: today,
+            };
+            var fromDateOption = options;
+            fromDateOption.onSelect = function () {
+                var instance = M.Datepicker.getInstance('toDate');
+                /*
+                instance.options.minDate = new Date(this.select);
+                instance.options.defaultDate = new Date(this.select);
+                */
+            };
+            var toDateOption = options;
+            
+            M.Datepicker.init(toDate, toDateOption);
+            M.Datepicker.init(fromDate, fromDateOption);
+
+        });
+    </script>
+</body>
+
+</html>
